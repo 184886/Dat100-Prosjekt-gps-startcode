@@ -12,97 +12,102 @@ import no.hvl.dat100ptc.TODO;
 
 public class CycleComputer extends EasyGraphics {
 
-	private static int SPACE = 10;
-	private static int MARGIN = 20;
-	
-	// FIXME: take into account number of measurements / gps points
-	private static int ROUTEMAPXSIZE = 800; 
-	private static int ROUTEMAPYSIZE = 400;
-	private static int HEIGHTSIZE = 200;
-	private static int TEXTWIDTH = 200;
+private static int SPACE = 10;
+private static int MARGIN = 20;
 
-	private GPSComputer gpscomp;
-	private GPSPoint[] gpspoints;
-	
-	private int N = 0;
+// FIXME: take into account number of measurements / gps points
+private static int ROUTEMAPXSIZE = 800;
+private static int ROUTEMAPYSIZE = 400;
+private static int HEIGHTSIZE = 200;
+private static int TEXTWIDTH = 200;
 
-	private double minlon, minlat, maxlon, maxlat;
+private GPSComputer gpscomp;
+private GPSPoint[] gpspoints;
 
-	private double xstep, ystep;
+private int N = 0;
 
-	public CycleComputer() {
+private double minlon, minlat, maxlon, maxlat;
 
-		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
+private double xstep, ystep;
 
-		gpscomp = new GPSComputer(filename);
-		gpspoints = gpscomp.getGPSPoints();
+public CycleComputer() {
 
-	}
+String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+gpscomp = new GPSComputer(filename);
+gpspoints = gpscomp.getGPSPoints();
 
-	public void run() {
+}
 
-		// throw new UnsupportedOperationException(TODO.method());
-		
-		N = gpspoints.length; // number of gps points
+public static void main(String[] args) {
+launch(args);
+}
 
-		minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
-		minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
+public void run() {
 
-		maxlon = GPSUtils.findMax(GPSUtils.getLongitudes(gpspoints));
-		maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
+// throw new UnsupportedOperationException(TODO.method());
 
-		xstep = xstep();
-		ystep = ystep();
+N = gpspoints.length; // number of gps points
 
-		makeWindow("Cycle Computer", 
-				2 * MARGIN + ROUTEMAPXSIZE,
-				2 * MARGIN + ROUTEMAPYSIZE + HEIGHTSIZE + SPACE);
+minlon = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
+minlat = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
 
-		bikeRoute();
+maxlon = GPSUtils.findMax(GPSUtils.getLongitudes(gpspoints));
+maxlat = GPSUtils.findMax(GPSUtils.getLatitudes(gpspoints));
 
-	}
+xstep = xstep();
+ystep = ystep();
 
-	// main method to visualise route, position, and current speed/time
-	public void bikeRoute() {
+makeWindow("Cycle Computer",
+2 * MARGIN + ROUTEMAPXSIZE,
+2 * MARGIN + ROUTEMAPYSIZE + HEIGHTSIZE + SPACE);
 
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+bikeRoute();
 
-	public double xstep() {
+}
 
-		throw new UnsupportedOperationException(TODO.method());
-	
-	}
+// main method to visualise route, position, and current speed/time
+public void bikeRoute() {
 
-	public double ystep() {
+//throw new UnsupportedOperationException(TODO.method());
+System.out.println("route of the bike");
 
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
-    
-	// show current speed and time (i'th GPS point)
-	public void showCurrent(int i) {
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+}
 
-	// show current height (i'th GPS point)
-	public void showHeight(int ybase, int i) {
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
-	
-	// show current position (i'th GPS point)
-	public void showPosition(int i) {
+public double xstep() {
 
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+//throw new UnsupportedOperationException(TODO.method());
+return 1.0;
+}
+
+public double ystep() {
+
+//throw new UnsupportedOperationException(TODO.method());
+return 1.0;
+
+}
+   
+// show current speed and time (i'th GPS point)
+public void showCurrent(int i) {
+
+//throw new UnsupportedOperationException(TODO.method());
+System.out.println(i);
+
+}
+
+// show current height (i'th GPS point)
+public void showHeight(int ybase, int i) {
+
+//throw new UnsupportedOperationException(TODO.method());
+System.out.println("height in "+i+"th position is "+(2 * MARGIN + ybase));
+
+}
+
+// show current position (i'th GPS point)
+public void showPosition(int i) {
+
+//throw new UnsupportedOperationException(TODO.method());
+System.out.println("position is "+i);
+
+}
 }

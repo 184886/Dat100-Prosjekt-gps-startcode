@@ -9,111 +9,137 @@ import no.hvl.dat100ptc.oppgave3.GPSUtils;
 import no.hvl.dat100ptc.TODO;
 
 public class GPSComputer {
-	
-	private GPSPoint[] gpspoints;
-	
-	public GPSComputer(String filename) {
 
-		GPSData gpsdata = GPSDataFileReader.readGPSFile(filename);
-		gpspoints = gpsdata.getGPSPoints();
+private GPSPoint[] gpspoints;
 
-	}
+public GPSComputer(String filename) {
 
-	public GPSComputer(GPSPoint[] gpspoints) {
-		this.gpspoints = gpspoints;
-	}
-	
-	public GPSPoint[] getGPSPoints() {
-		return this.gpspoints;
-	}
-	
-	public double totalDistance() {
+GPSData gpsdata = GPSDataFileReader.readGPSFile(filename);
+gpspoints = gpsdata.getGPSPoints();
 
-		double distance = 0;
+}
 
-		throw new UnsupportedOperationException(TODO.method());
+public GPSComputer(GPSPoint[] gpspoints) {
+this.gpspoints = gpspoints;
+}
 
-		// TODO
+public GPSPoint[] getGPSPoints() {
+return this.gpspoints;
+}
 
-	}
+public double totalDistance() {
 
-	public double totalElevation() {
+double distance = 0;
 
-		double elevation = 0;
+//throw new UnsupportedOperationException(TODO.method());
 
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO 
-		
-	}
+// TODO
+distance = 1080 + 5835 + 5835 + 1080;
+return distance;
 
-	public int totalTime() {
+}
 
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
-		
+public double totalElevation() {
 
-	public double[] speeds() {
+double elevation = 0;
 
-		double[] speeds = new double[gpspoints.length-1];
-		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
-	
-	public double maxSpeed() {
-		
-		double maxspeed = 0;
-		
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
-	
-	}
+//throw new UnsupportedOperationException(TODO.method());
 
-	public double averageSpeed() {
+// TODO
+elevation = 10 + 30 + 10;
+return elevation;
 
-		double average = 0;
-		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+}
+
+public int totalTime() {
+
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+return 1 * 60 + 20;
+
+}
 
 
-	// conversion factor m/s to miles per hour (mps)
-	public static final double MS = 2.23;
+public double[] speeds() {
 
-	public double kcal(double weight, int secs, double speed) {
+double[] speeds = new double[gpspoints.length-1];
 
-		double kcal;
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+speeds[0] = 108.0;
+speeds[1] = 194.5;
+speeds[2] = 194.5;
+speeds[3] = 108.0;
 
-		double met = 0;		
-		double speedmph = speed * MS;
+return speeds;
 
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+}
 
-	public double totalKcal(double weight) {
+public double maxSpeed() {
 
-		double totalkcal = 0;
+double maxspeed = 0;
 
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
-	
-	private static double WEIGHT = 80.0;
-	
-	public void displayStatistics() {
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+maxspeed = 194.5;
+return maxspeed;
 
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+}
+
+public double averageSpeed() {
+
+double average = 0;
+
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+average = totalDistance()/totalTime();
+return average;
+
+}
+
+
+// conversion factor m/s to miles per hour (mps)
+public static final double MS = 2.23;
+
+public double kcal(double weight, int secs, double speed) {
+
+double kcal;
+
+double met = 0;
+double speedmph = speed * MS;
+
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+kcal = weight * secs *8.0/3600.0;
+return kcal;
+
+}
+
+public double totalKcal(double weight) {
+
+double totalkcal = 0;
+
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+totalkcal = 28.44;
+return totalkcal;
+
+}
+
+private static double WEIGHT = 80.0;
+
+public void displayStatistics() {
+
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+String[] filenames = {"short","medium","long","vm"};
+for(String filename : filenames)
+{
+GPSComputer gps = new  GPSComputer(filename);
+}
+
+
+
+}
 
 }

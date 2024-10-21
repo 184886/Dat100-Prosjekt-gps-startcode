@@ -11,38 +11,39 @@ import no.hvl.dat100ptc.oppgave4.GPSComputer;
 import no.hvl.dat100ptc.TODO;
 
 public class ShowSpeed extends EasyGraphics {
-			
-	private static int MARGIN = 50;
-	private static int BARHEIGHT = 100; 
 
-	private GPSComputer gpscomputer;
-	
-	public ShowSpeed() {
+private static int MARGIN = 50;
+private static int BARHEIGHT = 100;
 
-		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
-		gpscomputer = new GPSComputer(filename);
-		
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
+private GPSComputer gpscomputer;
 
-	public void run() {
+public ShowSpeed() {
 
-		makeWindow("Speed profile", 
-				2 * MARGIN + 
-				2 * gpscomputer.speeds().length, 2 * MARGIN + BARHEIGHT);
-		
-		showSpeedProfile(MARGIN + BARHEIGHT);
-	}
-	
-	public void showSpeedProfile(int ybase) {
-		
-		int x = MARGIN,y;
-	
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-		
-	}
+String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
+gpscomputer = new GPSComputer(filename);
+
+}
+
+public static void main(String[] args) {
+launch(args);
+}
+
+public void run() {
+
+makeWindow("Speed profile",
+2 * MARGIN +
+2 * gpscomputer.speeds().length, 2 * MARGIN + BARHEIGHT);
+
+showSpeedProfile(MARGIN + BARHEIGHT);
+}
+
+public void showSpeedProfile(int ybase) {
+
+int x = MARGIN,y;
+
+// TODO
+//throw new UnsupportedOperationException(TODO.method());
+y = 2* MARGIN + ybase;
+
+}
 }
