@@ -3,10 +3,10 @@ package no.hvl.dat100ptc.oppgave1;
 
 public class GPSPoint {
 
-	int time;
-	double latitude;
-	double longitude;
-	double elevation;
+	private int time;
+	private double latitude;
+	private double longitude;
+	private double elevation;
 
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
@@ -15,7 +15,7 @@ public class GPSPoint {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.elevation = elevation;
-//kommentar
+
 	}
 
 	public int getTime() {
