@@ -9,48 +9,44 @@ public class GPSData {
 	protected int antall = 0;
 
 	public GPSData(int antall) {
-
 		gpspoints = new GPSPoint[antall];
-
+		antall = 0;
+		
 	}
 
 	public GPSPoint[] getGPSPoints() {
 		return this.gpspoints;
 	}
-
+	
 	protected boolean insertGPS(GPSPoint gpspoint) {
 
 		boolean inserted = false;
-
-		GPSPoint[] gpoints = this.getGPSPoints();
-		for (int x = 0; x < gpoints.length; x++) {
-			if (x == antall) {
-				gpoints[x] = gpspoint;
-				inserted = true;
-				this.antall++;
-				break;
-			}
+		
+		if (gpspoints.length > antall) {
+			gpspoints[antall] = gpspoint;
+			antall++;
+			inserted = true;
 		}
-
+		
 		return inserted;
-
+	
 	}
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 
-		GPSPoint gpspoint;
-
-		this.antall++;
-
-		return true;
-
+		GPSPoint gpspoint = GPSDataConverter.convert(time, latitude, longitude, elevation);
+	
+		return insertGPS(gpspoint);
+		
+		
 	}
 
 	public void print() {
-
-		new GPSData(1).insertGPS(gpspoints[0]);
-		new GPSData(2).insertGPS(gpspoints[1]);
-		new GPSData(3).insertGPS(gpspoints[2]);
-
+		System.out.println("====== GPS Data - START ======");
+		for (int i = 0; i < antall; i++) {
+			System.out.println(gpspoints[i].toString());
+		}
+		System.out.println("====== GPS Data - SLUTT ======");
+		
 	}
 }

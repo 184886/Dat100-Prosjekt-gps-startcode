@@ -12,38 +12,43 @@ import no.hvl.dat100ptc.TODO;
 
 public class ShowSpeed extends EasyGraphics {
 
-private static int MARGIN = 50;
-private static int BARHEIGHT = 100;
+	private static int MARGIN = 50;
+	private static int BARHEIGHT = 100;
 
-private GPSComputer gpscomputer;
+	private GPSComputer gpscomputer;
 
-public ShowSpeed() {
+	public ShowSpeed() {
 
-String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
-gpscomputer = new GPSComputer(filename);
+		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
+		gpscomputer = new GPSComputer(filename);
 
-}
+	}
 
-public static void main(String[] args) {
-launch(args);
-}
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-public void run() {
+	public void run() {
 
-makeWindow("Speed profile",
-2 * MARGIN +
-2 * gpscomputer.speeds().length, 2 * MARGIN + BARHEIGHT);
+		makeWindow("Speed profile", 2 * MARGIN + 2 * gpscomputer.speeds().length, 2 * MARGIN + BARHEIGHT);
 
-showSpeedProfile(MARGIN + BARHEIGHT);
-}
+		showSpeedProfile(MARGIN + BARHEIGHT);
+	}
 
-public void showSpeedProfile(int ybase) {
+	public void showSpeedProfile(int ybase) {
 
-int x = MARGIN,y;
+		int x = MARGIN, y;
 
-// TODO
-//throw new UnsupportedOperationException(TODO.method());
-y = 2* MARGIN + ybase;
+		double[] speeds = gpscomputer.speeds();
 
-}
+		for (int i = 0; i < speeds.length; i++) {
+			y = (int) (3.6*speeds[i]);
+			setColor(0, 0, 255);
+			drawLine(x, ybase, x, ybase - y);
+			x += 2;
+
+		}
+		setColor(0, 255, 0);
+		drawLine(MARGIN, ybase - (int) (gpscomputer.averageSpeed()*3.6), x, ybase - (int) (gpscomputer.averageSpeed()*3.6));
+	}
 }
